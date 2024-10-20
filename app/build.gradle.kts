@@ -7,6 +7,10 @@ android {
     namespace = "com.example.epokafcm"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.epokafcm"
         minSdk = 24
