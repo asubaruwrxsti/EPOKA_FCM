@@ -4,10 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.epokafcm.databinding.FragmentDashboardBinding
+import com.example.epokafcm.utils.HttpRequestConfig
+import java.io.File
+
+//val dotenv = dotenv{
+//    directory = "assets"
+//    filename = "env"
+//}
 
 class DashboardFragment : Fragment() {
 
@@ -28,10 +34,30 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val username = dotenv["API_ENDPOINT_USERNAME"]
+//        val password = dotenv["API_ENDPOINT_PASSWORD"]
+//        val auth = "Basic " + Base64.encodeToString("$username:$password".toByteArray(), Base64.NO_WRAP)
+
+        val config = HttpRequestConfig(
+            url = "http://172.236.203.173:8000/timetable/",
+            method = "GET",
+//            headers = mapOf("Authorization" to auth)
+        )
+
+        val currentWorkingDirectory = System.getProperty("user.dir")
+
+
+//        CoroutineScope(Dispatchers.Main).launch {
+//            try {
+//                val response = sendHttpRequest(config)
+//                val textView: TextView = binding.textDashboard
+//                textView.text = response
+//            } catch (e: Exception) {
+//                val textView: TextView = binding.textDashboard
+//                textView.text = e.message
+//            }
+//        }
+
         return root
     }
 
